@@ -1,0 +1,34 @@
+[
+  {
+    "nome": "ana",
+    "senha": "12345",
+    "livros": [
+      "A arte da guerra"
+    ]
+  },
+  {
+    "nome": "pedro",
+    "senha": "1234",
+    "livros": [
+      "O diario de anne frank",
+      "A arte da guerra"
+    ]
+  },
+  {
+    "nome": "pedrinho",
+    "senha": "1234567",
+    "livros": [
+      "O principe"
+    ]
+  },
+  {
+    "nome": "WAGNER",
+    "senha": "12345",
+    "livros": []
+  },
+  {
+    "nome": "teste",
+    "senha": "123",
+    "livros": []
+  }
+]
