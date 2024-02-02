@@ -9,6 +9,8 @@ customtkinter.set_appearance_mode("light")
 def principal(usuario,senha):
     tela_principal = customtkinter.CTk()
     tela_principal.geometry("350x300")
+    tela_principal.iconbitmap("livro.ico")
+    tela_principal.title("Biblioteca do João")
     current_usuario = usuario
     password = senha
     lbl = customtkinter.CTkLabel(tela_principal,text="Bem-vindo(a) {}".format(usuario),font=("Arial",22,"bold"))
@@ -56,6 +58,7 @@ def principal(usuario,senha):
         usuario_logado = current_usuario 
         livro_a_adicionar = entrada_livro.get()
         adicionar_livro(usuario_logado, livro_a_adicionar)
+        entrada_livro.delete("0","end")
 
 
     def listagem():
@@ -67,9 +70,11 @@ def principal(usuario,senha):
             def ver_livros(usuario):
                 dados_atualizados = carregar_dados()
                 tela_listagem = customtkinter.CTk()
+                tela_listagem.iconbitmap("livro.ico")
+                tela_listagem.title("Biblioteca do João")
                 frame = customtkinter.CTkScrollableFrame(tela_listagem,width=350,height=450,fg_color="white")
                 frame.pack()
-                tiuto = customtkinter.CTkLabel(frame,text="Meus livros: ")
+                tiuto = customtkinter.CTkLabel(frame,text="Meus livros: ",font=("Arial",25,"bold"))
                 tiuto.pack(padx=10, pady=10)
                 def mais_infos(livro):
                         print(livro)
@@ -92,8 +97,11 @@ def principal(usuario,senha):
                         json.dump(dados_velhos,file,indent=2)
                     print("deletado")
                     tela_confirmacao_deletar_livro = customtkinter.CTk()
-                    lbl = customtkinter.CTkLabel(tela_confirmacao_deletar_livro,text="Livro deletado")
-                    lbl.pack()
+                    tela_confirmacao_deletar_livro.geometry("200x80")
+                    tela_confirmacao_deletar_livro.iconbitmap("livro.ico")
+                    tela_confirmacao_deletar_livro.title("Biblioteca do João")
+                    lbl = customtkinter.CTkLabel(tela_confirmacao_deletar_livro,text="Livro deletado com sucesso!",wraplength=150,font=("Arial",16,"bold"),text_color="green")
+                    lbl.pack(padx=10,pady=10)
                     tela_listagem.withdraw()
                     tela_confirmacao_deletar_livro.mainloop()
                 for elemetos in dados_atualizados:
@@ -102,12 +110,12 @@ def principal(usuario,senha):
                         for livros in elemetos['livros']:
                             linha = customtkinter.CTkLabel(frame, text="="*110,height=1,font=("Arial",5))
                             linha.pack(padx=10,pady=10)
-                            label = customtkinter.CTkLabel(frame,text="{}".format(livros))
-                            infos_livros = customtkinter.CTkButton(frame,text="Mais informacoes",command=lambda l=livros:mais_infos(l))
-                            btn_deletar_livro = customtkinter.CTkButton(frame,text="Deletar livro",fg_color="red",hover_color="red",command=lambda ll=livros:deletar_livro(ll))
+                            label = customtkinter.CTkLabel(frame,text="{}".format(livros),font=("Arial",20,"bold"))
+                            infos_livros = customtkinter.CTkButton(frame,text="Mais informações",command=lambda l=livros:mais_infos(l),font=("Arial",18,"bold"),fg_color="#159A9C",hover_color="#002333",width=200,corner_radius=5,text_color="#DEEFE7")
+                            btn_deletar_livro = customtkinter.CTkButton(frame,text="Deletar livro",command=lambda ll=livros:deletar_livro(ll),fg_color="#BD2A2E",text_color="white",width=200,corner_radius=5,font=("Arial",18,"bold"),hover_color="#FF4858")
                             label.pack()
-                            infos_livros.pack(padx=10,pady=10)
-                            btn_deletar_livro.pack(padx=10,pady=10)
+                            infos_livros.pack(padx=5,pady=5)
+                            btn_deletar_livro.pack(padx=5,pady=5)
                         break
                 tela_listagem.mainloop()
             ver_livros(current_usuario)
@@ -135,11 +143,13 @@ def principal(usuario,senha):
 def tela_login():
     tela_login = customtkinter.CTk()
     tela_login.geometry("300x250")
+    tela_login.iconbitmap("livro.ico")
+    tela_login.title("Biblioteca do João")
     lbllogin = customtkinter.CTkLabel(tela_login,text="Faça seu login",font=('Arial',20,"bold"),text_color="#002333")
     lbllogin.pack(padx=5, pady=5)
     entrada_user = customtkinter.CTkEntry(tela_login,placeholder_text="Nome:",width=250,font=("Arial",15,"bold"),placeholder_text_color="#3b3b3b")
     entrada_user.pack(padx=5,pady=5)
-    entrada_senha_login = customtkinter.CTkEntry(tela_login,placeholder_text="Senha:",width=250,font=("Arial",15,"bold"),placeholder_text_color="#3b3b3b")
+    entrada_senha_login = customtkinter.CTkEntry(tela_login,placeholder_text="Senha:",width=250,font=("Arial",15,"bold"),placeholder_text_color="#3b3b3b",show="*")
     entrada_senha_login.pack(padx=5,pady=5)
     def logar():
         usuario = entrada_user.get()
@@ -189,11 +199,13 @@ def tela_login():
 def tela_cadastro():
     cadastro = customtkinter.CTk()
     cadastro.geometry("300x250")
+    cadastro.iconbitmap("livro.ico")
+    cadastro.title("Biblioteca do João")
     lblcadastro = customtkinter.CTkLabel(cadastro,text ="Digite suas informacões",font=('Arial',20,"bold"),text_color="#002333")
     lblcadastro.pack(padx = 5, pady = 5)
     entrada_nome = customtkinter.CTkEntry(cadastro,placeholder_text="Nome:",width=250,font=("Arial",15,"bold"),placeholder_text_color="#3b3b3b")
     entrada_nome.pack(padx=5, pady=5)
-    entrada_senha = customtkinter.CTkEntry(cadastro,placeholder_text="Senha:",width=250,font=("Arial",15,"bold"),placeholder_text_color="#3b3b3b")
+    entrada_senha = customtkinter.CTkEntry(cadastro,placeholder_text="Senha:",width=250,font=("Arial",15,"bold"),placeholder_text_color="#3b3b3b",show="*")
     entrada_senha.pack(padx=5, pady=5)
 
     def cadastrar():
@@ -219,7 +231,7 @@ def tela_cadastro():
                 json.dump(dados_existentes, arquivo, indent=2)
         nome_arquivo = "dados.json"
         dados_atualizados = carregar_dados(nome_arquivo)
-
+        adiconado = False
         for elemetos in dados_atualizados:
             if elemetos['nome'].lower() == user.Nome.lower() or nome == '' or senha == '':
                 adiconado = True
@@ -239,6 +251,8 @@ def tela_cadastro():
             })
             tela_confirmacao_cadastro = customtkinter.CTk()
             tela_confirmacao_cadastro.geometry("200x80")
+            tela_confirmacao_cadastro.title("Biblioteca do João")
+            tela_confirmacao_cadastro.iconbitmap("livro.ico")
             lbl_confirmacao = customtkinter.CTkLabel(tela_confirmacao_cadastro,text="Usuario cadastrado com sucesso!",wraplength=150,font=("Arial",16,"bold"),text_color="green")
             lbl_confirmacao.pack(padx=10,pady=10)
             cadastro.withdraw()
@@ -266,6 +280,8 @@ def acervo():
 
 main = customtkinter.CTk()
 main.geometry("370x250")
+main.title("Biblioteca do João")
+main.iconbitmap("livro.ico")
 lbl = customtkinter.CTkLabel(main,text ="Biblioteca do João",font=('Arial',26,"bold"))
 lbl.pack(padx = 5, pady = 5)
 lblcadastro = customtkinter.CTkLabel(main,text ="Cadastre-se ou entre",font=("Arial",16,"bold"),text_color="#3b3b3b")

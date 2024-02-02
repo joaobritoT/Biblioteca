@@ -1,34 +1,38 @@
 [
   {
-    "nome": "ana",
+    "nome": "joaozinho",
     "senha": "12345",
     "livros": [
       "A arte da guerra"
     ]
   },
   {
-    "nome": "pedro",
+    "nome": "Ana",
+    "senha": "12345",
+    "livros": [
+      "A culpa eh das estrelas",
+      "Metidacoes",
+      "Diario de um banana"
+    ]
+  },
+  {
+    "nome": "joao pedro",
+    "senha": "jv982314",
+    "livros": [
+      "O pr\u00edncipe",
+      "A culpa \u00e9 das estrelas"
+    ]
+  },
+  {
+    "nome": "aninha",
+    "senha": "12345",
+    "livros": [
+      "A arte da guerra"
+    ]
+  },
+  {
+    "nome": "joao pedro2",
     "senha": "1234",
-    "livros": [
-      "O diario de anne frank",
-      "A arte da guerra"
-    ]
-  },
-  {
-    "nome": "pedrinho",
-    "senha": "1234567",
-    "livros": [
-      "O principe"
-    ]
-  },
-  {
-    "nome": "WAGNER",
-    "senha": "12345",
-    "livros": []
-  },
-  {
-    "nome": "teste",
-    "senha": "123",
     "livros": []
   }
 ]
