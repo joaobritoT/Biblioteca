@@ -34,5 +34,15 @@
     "nome": "joao pedro2",
     "senha": "1234",
     "livros": []
+  },
+  {
+    "nome": "katia",
+    "senha": "12345",
+    "livros": []
+  },
+  {
+    "nome": "joao victor",
+    "senha": "888",
+    "livros": []
   }
 ]
